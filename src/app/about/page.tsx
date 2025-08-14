@@ -8,12 +8,16 @@ export default function AboutPage() {
       <div className="bg-gradient-to-br from-blue-50 to-indigo-100 py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
+            <div className="w-20 h-20 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <span className="text-2xl font-bold text-blue-600">Hi</span>
+            </div>
             <h1 className="text-4xl font-bold text-gray-900 mb-6">
-              Hi, I&apos;m sharing my story
+              I&apos;m [Your Name]
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Because unemployment feels isolating, but it doesn&apos;t have to be. 
-              This is my space to document the real experience - not the polished LinkedIn version.
+              And this is my unemployment story. Not the sanitized version you see on social media, 
+              but the real, messy, human experience of what it&apos;s actually like to be without work 
+              while trying to figure out what comes next.
             </p>
           </div>
         </div>
@@ -27,24 +31,23 @@ export default function AboutPage() {
               {/* Personal Story */}
               <section>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  Why This Journey Started
+                  How I Got Here
                 </h2>
                 <div className="prose prose-lg text-gray-600 space-y-4">
                   <p>
-                    After [X] years in [your industry], I found myself unexpectedly unemployed. 
-                    Like many others, I initially thought it would be a quick transition - 
-                    update the resume, send some applications, land interviews, get hired.
+                    [You can customize this with your real story] - I used to work in [your field] 
+                    for [X] years. I thought I had it figured out. Then life happened, and suddenly 
+                    I was scrolling job boards at 2 AM, questioning everything I thought I knew about myself.
                   </p>
                   <p>
-                    Reality hit different. The silence after applications, the rejection emails, 
-                    the slowly dwindling savings, the well-meaning but sometimes tone-deaf advice 
-                    from friends and family who haven&apos;t been in this position.
+                    What nobody tells you is how unemployment messes with your head. It&apos;s not just 
+                    about finding another job - it&apos;s about maintaining your sanity, your self-worth, 
+                    and your hope while everything feels uncertain.
                   </p>
                   <p>
-                    This website exists because I realized that while there are countless 
-                    &quot;how to find a job&quot; resources, there aren&apos;t enough spaces that acknowledge 
-                    the emotional, psychological, and practical realities of being unemployed 
-                    for an extended period.
+                    I started documenting this because I felt so alone in these feelings. 
+                    Turns out, a lot of us are going through similar stuff, but we&apos;re all 
+                    suffering in silence. So here&apos;s my attempt to break that silence.
                   </p>
                 </div>
               </section>

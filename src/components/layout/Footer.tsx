@@ -15,8 +15,8 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-gray-600 max-w-sm">
-              Sharing the real experience of unemployment - the struggles, the growth, 
-              and the hope. You&apos;re not alone in this journey.
+              My personal space for sharing the real, unfiltered experience of unemployment. 
+              The daily struggles, small victories, and everything in between.
             </p>
           </div>
 
@@ -28,23 +28,13 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link href="/blog" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-                  My Journey
+                  My Stories
                 </Link>
               </li>
               <li>
-                <a href="/resources" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-                  Resources
-                </a>
-              </li>
-              <li>
-                <a href="/timeline" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-                  Timeline
-                </a>
-              </li>
-              <li>
-                <a href="/about" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
+                <Link href="/about" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
                   About Me
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

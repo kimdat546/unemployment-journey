@@ -7,10 +7,8 @@ import { useState } from 'react'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'My Journey', href: '/blog' },
-  { name: 'Timeline', href: '/timeline' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'About', href: '/about' },
+  { name: 'My Stories', href: '/blog' },
+  { name: 'About Me', href: '/about' },
 ]
 
 export default function Header() {

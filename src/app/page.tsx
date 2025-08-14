@@ -10,76 +10,111 @@ export default async function Home() {
 
   return (
     <div className="bg-white">
-      {/* Hero Section */}
+      {/* Personal Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
-              My Unemployment{' '}
-              <span className="text-blue-600">Journey</span>
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Sharing the real, raw experience of being unemployed. The struggles, 
-              the growth, the small victories, and the hope that keeps us going. 
-              You&apos;re not alone in this.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <div className="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <span className="text-2xl font-bold text-blue-600">Me</span>
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                Hi, I&apos;m documenting my{' '}
+                <span className="text-blue-600">unemployment story</span>
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                This is my personal space to share what I&apos;m really going through - 
+                the daily struggles, unexpected moments of hope, and everything in between. 
+                No filters, just honest feelings.
+              </p>
+            </div>
+            
+            {/* Quick Personal Stats */}
+            <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-gray-900">Day 120</div>
+                  <div className="text-sm text-gray-600">of this journey</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-green-600">15</div>
+                  <div className="text-sm text-gray-600">good days</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-orange-600">25</div>
+                  <div className="text-sm text-gray-600">tough days</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-blue-600">Growing</div>
+                  <div className="text-sm text-gray-600">every day</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center">
               <Link
                 href="/blog"
-                className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors mr-4"
               >
-                Read My Story
+                Read My Daily Stories
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
-                href="/resources"
+                href="/about"
                 className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg border border-blue-600 hover:bg-blue-50 transition-colors"
               >
-                Find Resources
+                About My Journey
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Personal Bio Section */}
       <section className="py-16 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <Calendar className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">120+</div>
-              <div className="text-sm text-gray-600">Days Unemployed</div>
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="bg-gray-50 rounded-2xl p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              A little about me and this journey
+            </h2>
+            <div className="prose prose-lg max-w-none text-gray-700 space-y-4">
+              <p>
+                I never thought I&apos;d be here - unemployed, searching for meaning, 
+                and trying to figure out what comes next. But here I am, and I&apos;ve 
+                decided to document this experience because I know I&apos;m not alone.
+              </p>
+              <p>
+                Some days are harder than others. Some days I feel hopeful and motivated. 
+                Most days are somewhere in between. This is my space to share those real, 
+                unfiltered moments - the kind you don&apos;t see in LinkedIn posts.
+              </p>
+              <p className="font-medium text-blue-700">
+                If you&apos;re going through something similar, know that your feelings are valid 
+                and you&apos;re not alone in this. We&apos;ll figure it out together.
+              </p>
             </div>
-            <div className="text-center">
-              <BookOpen className="h-8 w-8 text-green-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">45</div>
-              <div className="text-sm text-gray-600">Blog Posts</div>
-            </div>
-            <div className="text-center">
-              <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">2.5K</div>
-              <div className="text-sm text-gray-600">Community Members</div>
-            </div>
-            <div className="text-center">
-              <TrendingUp className="h-8 w-8 text-orange-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">150+</div>
-              <div className="text-sm text-gray-600">Applications Sent</div>
+            <div className="mt-6 text-center">
+              <Link
+                href="/about"
+                className="text-blue-600 hover:text-blue-700 font-medium"
+              >
+                Read my full story →
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Recent Posts */}
+      {/* My Recent Stories */}
       <section className="py-16 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Recent Updates
+              My Recent Stories
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Follow along with my daily experiences, thoughts, and lessons learned 
-              during this challenging but growth-filled time.
+              Here&apos;s what I&apos;ve been feeling and experiencing lately. 
+              The real, unfiltered moments of this journey.
             </p>
           </div>
 
@@ -90,28 +125,55 @@ export default async function Home() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-500 mb-4">
-                No blog posts yet. Check back soon for updates!
-              </p>
-              <Link
-                href="/about"
-                className="text-blue-600 hover:text-blue-700 font-medium"
-              >
-                Learn more about this journey →
-              </Link>
+            <div className="max-w-2xl mx-auto">
+              {/* Sample Story Previews */}
+              <div className="space-y-6">
+                <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-blue-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">Coming Soon: My Daily Stories</h3>
+                  <p className="text-gray-600 text-sm mb-3">
+                    I&apos;m setting up my writing space to start sharing daily moments - the good days, 
+                    the tough days, and everything in between.
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Stories like: &quot;Day 15: Why I cried at the grocery store&quot; or 
+                    &quot;Small win: Finally updated my resume&quot;
+                  </p>
+                </div>
+                
+                <div className="bg-white rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+                  <h3 className="font-semibold text-gray-900 mb-2">What to Expect</h3>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Daily check-ins about how I&apos;m feeling</li>
+                    <li>• Job application wins and rejections</li>
+                    <li>• Random thoughts at 2 AM</li>
+                    <li>• Small victories worth celebrating</li>
+                    <li>• Honest moments about mental health</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="text-center mt-8">
+                <Link
+                  href="/about"
+                  className="text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Learn more about my journey →
+                </Link>
+              </div>
             </div>
           )}
 
-          <div className="text-center">
-            <Link
-              href="/blog"
-              className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
-            >
-              View All Posts
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </div>
+          {recentPosts.length > 0 && (
+            <div className="text-center">
+              <Link
+                href="/blog"
+                className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+              >
+                Read All My Stories
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
@@ -122,23 +184,34 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Personal Connection Section */}
       <section className="bg-blue-600 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">
-            Going Through Something Similar?
+            You&apos;re Not Alone in This
           </h2>
-          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-            Let&apos;s connect. Share your story, find resources, or just know that 
-            someone else understands what you&apos;re going through.
+          <p className="text-blue-100 mb-8 text-lg leading-relaxed">
+            If my story resonates with you, or if you&apos;re going through your own unemployment journey, 
+            I&apos;d love to connect. Sometimes just knowing someone else understands makes all the difference.
           </p>
-          <Link
-            href="/about"
-            className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            Get in Touch
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/about"
+              className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              Read My Full Story
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+            <Link
+              href="/blog"
+              className="inline-flex items-center px-8 py-3 bg-blue-700 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors"
+            >
+              Follow My Journey
+            </Link>
+          </div>
+          <p className="text-blue-200 text-sm mt-6">
+            This is temporary. We&apos;ll figure it out together. 💙
+          </p>
         </div>
       </section>
     </div>
