@@ -12,7 +12,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   const { title, slug, excerpt, publishedDate, featuredImage, tags } = post.fields
 
   return (
-    <article className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+    <article className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden hover-lift border border-gray-100">
       {featuredImage && typeof featuredImage === 'object' && 'fields' in featuredImage && (
         <div className="aspect-video w-full overflow-hidden">
           <Image

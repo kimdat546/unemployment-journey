@@ -11,57 +11,67 @@ export default async function Home() {
   return (
     <div className="bg-white">
       {/* Personal Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-24 overflow-hidden">
+        {/* Subtle background elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+          <div className="absolute top-10 right-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+        </div>
+        
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <div className="w-24 h-24 bg-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center">
-                <span className="text-2xl font-bold text-blue-600">Me</span>
+              <div className="w-28 h-28 bg-gradient-to-br from-blue-100 to-indigo-200 rounded-full mx-auto mb-8 flex items-center justify-center shadow-lg">
+                <span className="text-3xl font-bold text-blue-600">✨</span>
               </div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-                Hi, I&apos;m documenting my{' '}
-                <span className="text-blue-600">unemployment story</span>
+              <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Hi, I&apos;m sharing my{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+                  unemployment journey
+                </span>
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
                 This is my personal space to share what I&apos;m really going through - 
                 the daily struggles, unexpected moments of hope, and everything in between. 
-                No filters, just honest feelings.
+                <span className="block mt-2 text-blue-700 font-medium">No filters, just honest feelings.</span>
               </p>
             </div>
             
             {/* Quick Personal Stats */}
-            <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-gray-900">Day 120</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 mb-8 border border-white/20">
+              <h2 className="text-center text-lg font-semibold text-gray-700 mb-6">My Journey So Far</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div className="bg-gray-50 rounded-xl p-4">
+                  <div className="text-3xl font-bold text-gray-900 mb-1">Day 120</div>
                   <div className="text-sm text-gray-600">of this journey</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-green-600">15</div>
-                  <div className="text-sm text-gray-600">good days</div>
+                <div className="bg-green-50 rounded-xl p-4">
+                  <div className="text-3xl font-bold text-green-600 mb-1">15</div>
+                  <div className="text-sm text-gray-600">hopeful days</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-orange-600">25</div>
-                  <div className="text-sm text-gray-600">tough days</div>
+                <div className="bg-orange-50 rounded-xl p-4">
+                  <div className="text-3xl font-bold text-orange-600 mb-1">25</div>
+                  <div className="text-sm text-gray-600">challenging days</div>
                 </div>
-                <div>
-                  <div className="text-2xl font-bold text-blue-600">Growing</div>
-                  <div className="text-sm text-gray-600">every day</div>
+                <div className="bg-blue-50 rounded-xl p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-1">∞</div>
+                  <div className="text-sm text-gray-600">lessons learned</div>
                 </div>
               </div>
             </div>
 
-            <div className="text-center">
+            <div className="text-center space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
               <Link
                 href="/blog"
-                className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors mr-4"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 Read My Daily Stories
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg border border-blue-600 hover:bg-blue-50 transition-colors"
+                className="inline-flex items-center px-8 py-4 bg-white/90 text-blue-600 font-semibold rounded-xl border-2 border-blue-200 hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 shadow-md hover:shadow-lg"
               >
                 About My Journey
               </Link>

@@ -29,7 +29,7 @@ const supportItems = [
 
 export default function EmotionalSupport() {
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 my-12">
+    <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-100 rounded-3xl p-10 my-12 shadow-lg border border-white/40">
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Remember: This is Temporary
@@ -45,7 +45,7 @@ export default function EmotionalSupport() {
           return (
             <div
               key={index}
-              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white/90 backdrop-blur-sm rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-200 hover-lift border border-white/50"
             >
               <div className={`inline-flex p-3 rounded-lg ${item.color} mb-4`}>
                 <Icon className="h-6 w-6" />

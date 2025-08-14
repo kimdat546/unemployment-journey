@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Search, Filter } from 'lucide-react'
 import { getBlogPosts } from '@/lib/contentful'
 import BlogCard from '@/components/ui/BlogCard'
