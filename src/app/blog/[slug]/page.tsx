@@ -66,7 +66,10 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           <header className="mb-8">
             <div className="flex items-center text-sm text-gray-500 mb-4">
               <Calendar className="h-4 w-4 mr-2" />
-              {format(new Date(publishedDate as string), 'MMMM d, yyyy')}
+              {publishedDate 
+                ? format(new Date(publishedDate as string), 'MMMM d, yyyy')
+                : format(new Date(post.sys.createdAt), 'MMMM d, yyyy')
+              }
             </div>
 
             <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">

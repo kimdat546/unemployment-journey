@@ -28,7 +28,10 @@ export default function BlogCard({ post }: BlogCardProps) {
       <div className="p-6">
         <div className="flex items-center text-sm text-gray-500 mb-2">
           <Calendar className="h-4 w-4 mr-1" />
-          {format(new Date(publishedDate as string), 'MMM d, yyyy')}
+          {publishedDate 
+            ? format(new Date(publishedDate as string), 'MMM d, yyyy')
+            : format(new Date(post.sys.createdAt), 'MMM d, yyyy')
+          }
         </div>
         
         <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
