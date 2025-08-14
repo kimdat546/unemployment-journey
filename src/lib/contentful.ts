@@ -1,12 +1,17 @@
 import { createClient } from 'contentful'
 
 export const client = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID || '',
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || '',
+  space: process.env.CONTENTFUL_SPACE_ID || 'dummy-space-id',
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || 'dummy-access-token',
 })
 
 export async function getBlogPosts() {
   try {
+    // Return empty array if no valid credentials
+    if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+      return []
+    }
+    
     const entries = await client.getEntries({
       content_type: 'blogPost',
       order: ['-fields.publishedDate'],
@@ -20,6 +25,11 @@ export async function getBlogPosts() {
 
 export async function getBlogPost(slug: string) {
   try {
+    // Return null if no valid credentials
+    if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+      return null
+    }
+    
     const entries = await client.getEntries({
       content_type: 'blogPost',
       'fields.slug': slug,
@@ -34,6 +44,10 @@ export async function getBlogPost(slug: string) {
 
 export async function getPage(slug: string) {
   try {
+    if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+      return null
+    }
+    
     const entries = await client.getEntries({
       content_type: 'page',
       'fields.slug': slug,
@@ -48,6 +62,10 @@ export async function getPage(slug: string) {
 
 export async function getResources() {
   try {
+    if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+      return []
+    }
+    
     const entries = await client.getEntries({
       content_type: 'resource',
       order: ['fields.category', 'fields.title'],

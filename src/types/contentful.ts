@@ -1,34 +1,21 @@
 import { Document } from '@contentful/rich-text-types'
+import { Entry } from 'contentful'
 
 export interface BlogPostFields {
   title: string
   slug: string
   content: Document
   excerpt?: string
-  featuredImage?: {
-    fields: {
-      file: {
-        url: string
-      }
-      title: string
-    }
-  }
+  featuredImage?: any
   tags?: string[]
   publishedDate: string
-  author: AuthorFields
+  author: any
 }
 
 export interface AuthorFields {
   name: string
   bio?: string
-  avatar?: {
-    fields: {
-      file: {
-        url: string
-      }
-      title: string
-    }
-  }
+  avatar?: any
 }
 
 export interface PageFields {
@@ -44,11 +31,4 @@ export interface ResourceFields {
   category: string
 }
 
-export interface ContentfulEntry<T> {
-  sys: {
-    id: string
-    createdAt: string
-    updatedAt: string
-  }
-  fields: T
-}
+export type ContentfulEntry<T> = Entry<any>

@@ -1,15 +1,15 @@
 import { notFound } from 'next/navigation'
 import { Calendar, ArrowLeft, Heart, MessageCircle } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { format } from 'date-fns'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getBlogPost, getBlogPosts } from '@/lib/contentful'
-import { ContentfulEntry, BlogPostFields } from '@/types/contentful'
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateStaticParams() {
@@ -20,7 +20,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = await getBlogPost(params.slug) as ContentfulEntry<BlogPostFields> | null
+  const { slug } = await params
+  const post = await getBlogPost(slug)
 
   if (!post) {
     return {
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export default async function BlogPost({ params }: BlogPostPageProps) {
-  const post = await getBlogPost(params.slug) as ContentfulEntry<BlogPostFields> | null
+  const { slug } = await params
+  const post = await getBlogPost(slug)
 
   if (!post) {
     notFound()
@@ -64,16 +66,16 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           <header className="mb-8">
             <div className="flex items-center text-sm text-gray-500 mb-4">
               <Calendar className="h-4 w-4 mr-2" />
-              {format(new Date(publishedDate), 'MMMM d, yyyy')}
+              {format(new Date(publishedDate as string), 'MMMM d, yyyy')}
             </div>
 
             <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
-              {title}
+              {title as string}
             </h1>
 
-            {tags && tags.length > 0 && (
+            {tags && Array.isArray(tags) && tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-6">
-                {tags.map((tag) => (
+                {(tags as string[]).map((tag) => (
                   <span
                     key={tag}
                     className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
@@ -86,11 +88,13 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           </header>
 
           {/* Featured Image */}
-          {featuredImage && (
+          {featuredImage && typeof featuredImage === 'object' && 'fields' in featuredImage && (
             <div className="mb-8 aspect-video w-full overflow-hidden rounded-lg">
-              <img
-                src={`https:${featuredImage.fields.file.url}`}
-                alt={featuredImage.fields.title}
+              <Image
+                src={`https:${(featuredImage as any).fields.file.url}`}
+                alt={(featuredImage as any).fields.title}
+                width={800}
+                height={450}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -98,24 +102,26 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
 
           {/* Content */}
           <div className="prose prose-lg max-w-none">
-            {documentToReactComponents(content)}
+            {documentToReactComponents(content as any)}
           </div>
 
           {/* Author Info */}
-          {author && (
+          {author && typeof author === 'object' && 'fields' in author && (
             <div className="mt-12 p-6 bg-gray-50 rounded-lg">
               <div className="flex items-start space-x-4">
-                {author.avatar && (
-                  <img
-                    src={`https:${author.avatar.fields.file.url}`}
-                    alt={author.name}
+                {(author as any).fields.avatar && (author as any).fields.avatar.fields && (
+                  <Image
+                    src={`https:${(author as any).fields.avatar.fields.file.url}`}
+                    alt={(author as any).fields.name}
+                    width={48}
+                    height={48}
                     className="w-12 h-12 rounded-full"
                   />
                 )}
                 <div>
-                  <h3 className="font-semibold text-gray-900">{author.name}</h3>
-                  {author.bio && (
-                    <p className="text-gray-600 mt-1">{author.bio}</p>
+                  <h3 className="font-semibold text-gray-900">{(author as any).fields.name}</h3>
+                  {(author as any).fields.bio && (
+                    <p className="text-gray-600 mt-1">{(author as any).fields.bio}</p>
                   )}
                 </div>
               </div>
@@ -129,7 +135,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
               Found this helpful?
             </h3>
             <p className="text-gray-600 mb-6">
-              Share your own story or leave a comment. Let's support each other through this journey.
+              Share your own story or leave a comment. Let&apos;s support each other through this journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button

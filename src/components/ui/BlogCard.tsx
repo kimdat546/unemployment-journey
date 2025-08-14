@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, ArrowRight } from 'lucide-react'
 import { format } from 'date-fns'
-import { ContentfulEntry, BlogPostFields } from '@/types/contentful'
+import { Entry } from 'contentful'
 
 interface BlogCardProps {
-  post: ContentfulEntry<BlogPostFields>
+  post: Entry<any>
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
@@ -12,11 +13,13 @@ export default function BlogCard({ post }: BlogCardProps) {
 
   return (
     <article className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-      {featuredImage && (
+      {featuredImage && typeof featuredImage === 'object' && 'fields' in featuredImage && (
         <div className="aspect-video w-full overflow-hidden">
-          <img
-            src={`https:${featuredImage.fields.file.url}`}
-            alt={featuredImage.fields.title}
+          <Image
+            src={`https:${(featuredImage as any).fields.file.url}`}
+            alt={(featuredImage as any).fields.title}
+            width={400}
+            height={225}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
         </div>
@@ -25,22 +28,22 @@ export default function BlogCard({ post }: BlogCardProps) {
       <div className="p-6">
         <div className="flex items-center text-sm text-gray-500 mb-2">
           <Calendar className="h-4 w-4 mr-1" />
-          {format(new Date(publishedDate), 'MMM d, yyyy')}
+          {format(new Date(publishedDate as string), 'MMM d, yyyy')}
         </div>
         
         <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
-          {title}
+          {title as string}
         </h3>
         
         {excerpt && (
           <p className="text-gray-600 mb-4 line-clamp-3">
-            {excerpt}
+            {excerpt as string}
           </p>
         )}
         
-        {tags && tags.length > 0 && (
+        {tags && Array.isArray(tags) && tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
-            {tags.slice(0, 3).map((tag) => (
+            {(tags as string[]).slice(0, 3).map((tag) => (
               <span
                 key={tag}
                 className="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
@@ -57,7 +60,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         )}
         
         <Link
-          href={`/blog/${slug}`}
+          href={`/blog/${slug as string}`}
           className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors group"
         >
           Read more

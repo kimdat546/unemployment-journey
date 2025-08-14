@@ -61,10 +61,10 @@ export default async function BlogPage() {
           ) : (
             <div className="text-center py-16">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                No posts yet, but they're coming!
+                No posts yet, but they&apos;re coming!
               </h2>
               <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                I'm currently setting up my Contentful CMS to start sharing my daily 
+                I&apos;m currently setting up my Contentful CMS to start sharing my daily 
                 experiences. Check back soon for authentic stories about the ups and 
                 downs of unemployment.
               </p>

@@ -9,10 +9,10 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <h1 className="text-4xl font-bold text-gray-900 mb-6">
-              Hi, I'm sharing my story
+              Hi, I&apos;m sharing my story
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Because unemployment feels isolating, but it doesn't have to be. 
+              Because unemployment feels isolating, but it doesn&apos;t have to be. 
               This is my space to document the real experience - not the polished LinkedIn version.
             </p>
           </div>
@@ -38,11 +38,11 @@ export default function AboutPage() {
                   <p>
                     Reality hit different. The silence after applications, the rejection emails, 
                     the slowly dwindling savings, the well-meaning but sometimes tone-deaf advice 
-                    from friends and family who haven't been in this position.
+                    from friends and family who haven&apos;t been in this position.
                   </p>
                   <p>
                     This website exists because I realized that while there are countless 
-                    "how to find a job" resources, there aren't enough spaces that acknowledge 
+                    &quot;how to find a job&quot; resources, there aren&apos;t enough spaces that acknowledge 
                     the emotional, psychological, and practical realities of being unemployed 
                     for an extended period.
                   </p>
@@ -65,7 +65,7 @@ export default function AboutPage() {
                   <div className="bg-green-50 rounded-lg p-6">
                     <h3 className="font-semibold text-green-900 mb-2">Practical Insights</h3>
                     <p className="text-green-800 text-sm">
-                      What's actually working, what isn't, and lessons learned 
+                      What&apos;s actually working, what isn&apos;t, and lessons learned 
                       from the trenches.
                     </p>
                   </div>
@@ -145,7 +145,7 @@ export default function AboutPage() {
               {/* Connect */}
               <div className="bg-blue-50 rounded-lg p-6">
                 <h3 className="font-semibold text-blue-900 mb-4">
-                  Let's Connect
+                  Let&apos;s Connect
                 </h3>
                 <p className="text-blue-800 text-sm mb-4">
                   Going through something similar? Want to share your story? 
@@ -164,10 +164,10 @@ export default function AboutPage() {
               <div className="bg-pink-50 rounded-lg p-6">
                 <Heart className="h-6 w-6 text-pink-600 mb-3" />
                 <h3 className="font-semibold text-pink-900 mb-2">
-                  You're Not Alone
+                  You&apos;re Not Alone
                 </h3>
                 <p className="text-pink-800 text-sm mb-4">
-                  If you're reading this while unemployed, know that your feelings 
+                  If you&apos;re reading this while unemployed, know that your feelings 
                   are valid and this situation is temporary.
                 </p>
                 <Link
