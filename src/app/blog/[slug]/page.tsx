@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { Calendar, ArrowLeft, Heart, MessageCircle } from 'lucide-react'
+import { Calendar, ArrowLeft, Heart, MessageCircle, Leaf, Sun } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { format } from 'date-fns'
@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   }
 
   return {
-    title: `${post.fields.title} | Unemployment Journey`,
-    description: post.fields.excerpt || 'A personal post about my unemployment journey',
+    title: `${post.fields.title} | Healing Journey`,
+    description: post.fields.excerpt || 'A personal post about my healing journey',
   }
 }
 
@@ -46,16 +46,16 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
   const { title, content, publishedDate, featuredImage, tags, author } = post.fields
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="min-h-screen">
       {/* Back Button */}
-      <div className="bg-gray-50 border-b border-gray-200 py-4">
+      <div className="bg-gradient-to-r from-green-50/50 to-blue-50/50 border-b border-green-200/30 py-6">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <Link
             href="/blog"
-            className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium"
+            className="inline-flex items-center text-green-600 hover:text-green-700 font-medium bg-white/50 px-4 py-2 rounded-lg hover:bg-white/70 transition-all backdrop-blur-sm"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to all posts
+            Back to healing stories
           </Link>
         </div>
       </div>
@@ -63,36 +63,53 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
       <article className="py-12">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           {/* Header */}
-          <header className="mb-8">
-            <div className="flex items-center text-sm text-gray-500 mb-4">
-              <Calendar className="h-4 w-4 mr-2" />
-              {publishedDate 
-                ? format(new Date(publishedDate as string), 'MMMM d, yyyy')
-                : format(new Date(post.sys.createdAt), 'MMMM d, yyyy')
-              }
-            </div>
-
-            <h1 className="text-4xl font-bold text-gray-900 mb-6 leading-tight">
-              {title as string}
-            </h1>
-
-            {tags && Array.isArray(tags) && tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-6">
-                {(tags as string[]).map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
+          <header className="mb-12 relative">
+            <div className="healing-card rounded-2xl p-8 relative overflow-hidden">
+              <div className="absolute top-4 right-4 w-12 h-12 opacity-15">
+                <Leaf className="w-full h-full text-green-400 gentle-float" />
               </div>
-            )}
+              
+              <div className="flex items-center text-sm text-green-600 mb-6">
+                <Calendar className="h-4 w-4 mr-2" />
+                {publishedDate 
+                  ? format(new Date(publishedDate as string), 'MMMM d, yyyy')
+                  : format(new Date(post.sys.createdAt), 'MMMM d, yyyy')
+                }
+                <span className="ml-4 text-green-500">•</span>
+                <span className="ml-2 text-green-600 text-xs bg-green-100 px-2 py-1 rounded-full">
+                  Healing Story
+                </span>
+              </div>
+
+              <h1 className="text-4xl lg:text-5xl font-bold text-green-800 mb-6 leading-tight">
+                {title as string}
+              </h1>
+
+              {tags && Array.isArray(tags) && tags.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {(tags as string[]).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-gradient-to-r from-green-100 to-blue-100 text-green-700 text-sm rounded-full border border-green-200/30"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+              
+              <div className="mt-6 p-4 bg-green-50 rounded-xl border-l-4 border-green-400">
+                <p className="text-green-700 font-medium text-sm flex items-center">
+                  <Heart className="w-4 h-4 mr-2" />
+                  This story is part of my authentic healing journey
+                </p>
+              </div>
+            </div>
           </header>
 
           {/* Featured Image */}
           {featuredImage && typeof featuredImage === 'object' && 'fields' in featuredImage && (
-            <div className="mb-8 aspect-video w-full overflow-hidden rounded-lg">
+            <div className="mb-12 aspect-video w-full overflow-hidden rounded-2xl shadow-lg relative">
               <Image
                 src={`https:${(featuredImage as any).fields.file.url}`}
                 alt={(featuredImage as any).fields.title}
@@ -100,60 +117,83 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
                 height={450}
                 className="w-full h-full object-cover"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           )}
 
           {/* Content */}
-          <div className="prose prose-lg max-w-none">
-            {documentToReactComponents(content as any)}
+          <div className="healing-card rounded-2xl p-8 mb-12 relative overflow-hidden">
+            <div className="absolute bottom-4 left-4 w-16 h-16 opacity-10">
+              <Sun className="w-full h-full text-yellow-400 soft-pulse" />
+            </div>
+            <div className="prose prose-lg max-w-none">
+              {documentToReactComponents(content as any)}
+            </div>
           </div>
 
           {/* Author Info */}
           {author && typeof author === 'object' && 'fields' in author && (
-            <div className="mt-12 p-6 bg-gray-50 rounded-lg">
+            <div className="healing-card rounded-2xl p-8 mb-8 relative overflow-hidden">
+              <div className="absolute top-2 right-2 w-8 h-8 opacity-15">
+                <Heart className="w-full h-full text-green-400 soft-pulse" />
+              </div>
               <div className="flex items-start space-x-4">
                 {(author as any).fields.avatar && (author as any).fields.avatar.fields && (
                   <Image
                     src={`https:${(author as any).fields.avatar.fields.file.url}`}
                     alt={(author as any).fields.name}
-                    width={48}
-                    height={48}
-                    className="w-12 h-12 rounded-full"
+                    width={60}
+                    height={60}
+                    className="w-15 h-15 rounded-full border-2 border-green-200"
                   />
                 )}
                 <div>
-                  <h3 className="font-semibold text-gray-900">{(author as any).fields.name}</h3>
+                  <h3 className="font-semibold text-green-800 text-lg">{(author as any).fields.name}</h3>
                   {(author as any).fields.bio && (
-                    <p className="text-gray-600 mt-1">{(author as any).fields.bio}</p>
+                    <p className="text-gray-700 mt-2 leading-relaxed">{(author as any).fields.bio}</p>
                   )}
+                  <p className="text-green-600 text-sm mt-2 font-medium">
+                    🌱 Sharing authentic healing stories
+                  </p>
                 </div>
               </div>
             </div>
           )}
 
           {/* Call to Action */}
-          <div className="mt-12 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 text-center">
-            <Heart className="h-8 w-8 text-red-500 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-gray-900 mb-2">
-              Found this helpful?
+          <div className="healing-card rounded-3xl p-10 text-center relative overflow-hidden">
+            <div className="absolute top-4 right-4 w-16 h-16 opacity-10">
+              <Heart className="w-full h-full text-green-400 breathe-animation" />
+            </div>
+            <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-blue-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <Heart className="h-8 w-8 text-green-600" />
+            </div>
+            <h3 className="text-2xl font-bold text-green-800 mb-4">
+              Did this healing story resonate?
             </h3>
-            <p className="text-gray-600 mb-6">
-              Share your own story or leave a comment. Let&apos;s support each other through this journey.
+            <p className="text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto">
+              Your healing journey matters too. Share your own story or connect with me. 
+              Together, we create a supportive community where authentic healing can flourish.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 disabled
-                className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-blue-600 text-white font-semibold rounded-xl hover:from-green-700 hover:to-blue-700 transition-all disabled:opacity-50 shadow-lg"
               >
                 <MessageCircle className="h-4 w-4 mr-2" />
-                Leave a Comment (Coming Soon)
+                Share Your Story (Coming Soon)
               </button>
               <Link
                 href="/about"
-                className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg border border-blue-600 hover:bg-blue-50 transition-colors"
+                className="inline-flex items-center px-8 py-4 bg-white/90 text-green-700 font-semibold rounded-xl border-2 border-green-300 hover:bg-green-50 hover:border-green-400 transition-all shadow-md"
               >
-                Get in Touch
+                Connect with Me
               </Link>
+            </div>
+            <div className="mt-6 p-4 bg-green-50 rounded-xl border border-green-200/30">
+              <p className="text-green-700 text-sm font-medium">
+                🤗 Remember: Your healing journey is unique and valuable
+              </p>
             </div>
           </div>
         </div>
