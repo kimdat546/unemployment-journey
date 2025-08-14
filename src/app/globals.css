@@ -1,8 +1,31 @@
 @import "tailwindcss";
 
-/* Custom styles for the unemployment journey theme */
+/* Custom styles for the unemployment journey theme - Healing focused */
 body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: linear-gradient(135deg, #f0f9ff 0%, #fef7f0 50%, #f0fdf4 100%);
+  min-height: 100vh;
+}
+
+/* Healing color palette */
+:root {
+  --healing-sage: #84a98c;
+  --healing-soft-green: #a8dadc;
+  --healing-warm-beige: #f1faee;
+  --healing-coral: #f4a261;
+  --healing-deep-blue: #457b9d;
+  --healing-lavender: #b19cd9;
+  --healing-mint: #c1f2d0;
+}
+
+/* Gentle breathing animation for calming effect */
+@keyframes breathe {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: scale(1.05) rotate(2deg); opacity: 1; }
+}
+
+.breathe-animation {
+  animation: breathe 4s ease-in-out infinite;
 }
 
 /* Custom animations */
@@ -43,33 +66,70 @@ body {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
-/* Prose styles for blog content */
+/* Healing-focused animations */
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.gentle-float {
+  animation: gentle-float 6s ease-in-out infinite;
+}
+
+@keyframes soft-pulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+.soft-pulse {
+  animation: soft-pulse 3s ease-in-out infinite;
+}
+
+/* Healing card styles */
+.healing-card {
+  background: linear-gradient(135deg, var(--healing-warm-beige) 0%, rgba(255,255,255,0.9) 100%);
+  border: 1px solid rgba(132, 169, 140, 0.2);
+  box-shadow: 0 4px 20px rgba(132, 169, 140, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.healing-card:hover {
+  box-shadow: 0 8px 30px rgba(132, 169, 140, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Prose styles for blog content - Healing focused */
 .prose {
-  color: #374151;
+  color: #2d3748;
   max-width: none;
+  line-height: 1.8;
 }
 
 .prose h1,
 .prose h2,
 .prose h3,
 .prose h4 {
-  color: #111827;
+  color: var(--healing-deep-blue);
   font-weight: 600;
 }
 
 .prose p {
-  margin: 1.25em 0;
-  line-height: 1.75;
+  margin: 1.5em 0;
+  line-height: 1.8;
 }
 
 .prose strong {
-  color: #111827;
+  color: var(--healing-sage);
   font-weight: 600;
 }
 
 .prose blockquote {
-  border-left: 4px solid #3b82f6;
-  padding-left: 1rem;
+  border-left: 4px solid var(--healing-sage);
+  padding-left: 1.5rem;
   font-style: italic;
-  color: #6b7280;
+  color: var(--healing-deep-blue);
+  background: linear-gradient(to right, var(--healing-mint), transparent);
+  padding: 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
 }
