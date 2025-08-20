@@ -1,34 +1,65 @@
-import { Document } from '@contentful/rich-text-types'
-import { Entry } from 'contentful'
+import type { Entry, EntryFieldTypes } from "contentful";
 
-export interface BlogPostFields {
-  title: string
-  slug: string
-  content: Document
-  excerpt?: string
-  featuredImage?: any
-  tags?: string[]
-  publishedDate: string
-  author: any
+// Simple asset interface following Vercel pattern
+export interface ContentfulAsset {
+  fields: {
+    title?: string;
+    file: {
+      url: string;
+      fileName?: string;
+      contentType?: string;
+    };
+  };
 }
 
-export interface AuthorFields {
-  name: string
-  bio?: string
-  avatar?: any
-}
+// Story content type skeleton
+export type StoryEntrySkeleton = {
+  contentTypeId: "story";
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    slug: EntryFieldTypes.Symbol;
+    content?: EntryFieldTypes.RichText;
+    excerpt?: EntryFieldTypes.Text;
+    featuredImage?: EntryFieldTypes.AssetLink;
+    tags?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+    publishedDate: EntryFieldTypes.Date;
+    author?: EntryFieldTypes.EntryLink<AuthorEntrySkeleton>;
+  };
+};
 
-export interface PageFields {
-  title: string
-  slug: string
-  content: Document
-}
+// Author content type skeleton
+export type AuthorEntrySkeleton = {
+  contentTypeId: "author";
+  fields: {
+    name?: EntryFieldTypes.Symbol;
+    bio?: EntryFieldTypes.Text;
+    avatar?: EntryFieldTypes.AssetLink;
+  };
+};
 
-export interface ResourceFields {
-  title: string
-  description: string
-  url: string
-  category: string
-}
+// Page content type skeleton
+export type PageEntrySkeleton = {
+  contentTypeId: "page";
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    slug: EntryFieldTypes.Symbol;
+    content: EntryFieldTypes.RichText;
+  };
+};
 
-export type ContentfulEntry<T> = Entry<any>
+// Resource content type skeleton
+export type ResourceEntrySkeleton = {
+  contentTypeId: "resource";
+  fields: {
+    title: EntryFieldTypes.Symbol;
+    description: EntryFieldTypes.Text;
+    url: EntryFieldTypes.Symbol;
+    category: EntryFieldTypes.Symbol;
+  };
+};
+
+// Type aliases for convenience - using proper skeleton types
+export type StoryEntry = Entry<StoryEntrySkeleton>;
+export type AuthorEntry = Entry<AuthorEntrySkeleton>;
+export type PageEntry = Entry<PageEntrySkeleton>;
+export type ResourceEntry = Entry<ResourceEntrySkeleton>;

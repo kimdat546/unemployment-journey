@@ -1,10 +1,12 @@
-import { notFound } from 'next/navigation'
-import { Calendar, ArrowLeft, Heart, MessageCircle, Leaf, Sun } from 'lucide-react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { format } from 'date-fns'
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getBlogPost, getBlogPosts } from '@/lib/contentful'
+import { ContentfulAsset, AuthorEntry } from '@/types/contentful'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import { format } from 'date-fns'
+import { ArrowLeft, Calendar, Heart, Leaf, MessageCircle, Sun } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { notFound } from 'next/navigation'
+import { Document } from '@contentful/rich-text-types'
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -51,7 +53,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
       <div className="bg-gradient-to-r from-green-50/50 to-blue-50/50 border-b border-green-200/30 py-6">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <Link
-            href="/blog"
+            href="/story"
             className="inline-flex items-center text-green-600 hover:text-green-700 font-medium bg-white/50 px-4 py-2 rounded-lg hover:bg-white/70 transition-all backdrop-blur-sm"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
@@ -68,13 +70,12 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
               <div className="absolute top-4 right-4 w-12 h-12 opacity-15">
                 <Leaf className="w-full h-full text-green-400 gentle-float" />
               </div>
-              
+
               <div className="flex items-center text-sm text-green-600 mb-6">
                 <Calendar className="h-4 w-4 mr-2" />
-                {publishedDate 
-                  ? format(new Date(publishedDate as string), 'MMMM d, yyyy')
-                  : format(new Date(post.sys.createdAt), 'MMMM d, yyyy')
-                }
+                {publishedDate
+                  ? format(new Date(publishedDate as string), "MMMM d, yyyy")
+                  : format(new Date(post.sys.createdAt), "MMMM d, yyyy")}
                 <span className="ml-4 text-green-500">•</span>
                 <span className="ml-2 text-green-600 text-xs bg-green-100 px-2 py-1 rounded-full">
                   Healing Story
@@ -97,7 +98,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
                   ))}
                 </div>
               )}
-              
+
               <div className="mt-6 p-4 bg-green-50 rounded-xl border-l-4 border-green-400">
                 <p className="text-green-700 font-medium text-sm flex items-center">
                   <Heart className="w-4 h-4 mr-2" />
@@ -108,18 +109,24 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
           </header>
 
           {/* Featured Image */}
-          {featuredImage && typeof featuredImage === 'object' && 'fields' in featuredImage && (
-            <div className="mb-12 aspect-video w-full overflow-hidden rounded-2xl shadow-lg relative">
-              <Image
-                src={`https:${(featuredImage as any).fields.file.url}`}
-                alt={(featuredImage as any).fields.title}
-                width={800}
-                height={450}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            </div>
-          )}
+          {featuredImage &&
+            (featuredImage as ContentfulAsset)?.fields?.file && (
+              <div className="mb-12 aspect-video w-full overflow-hidden rounded-2xl shadow-lg relative">
+                <Image
+                  src={`https:${
+                    (featuredImage as ContentfulAsset).fields.file.url
+                  }`}
+                  alt={
+                    (featuredImage as ContentfulAsset).fields.title ||
+                    "Featured image"
+                  }
+                  width={800}
+                  height={450}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              </div>
+            )}
 
           {/* Content */}
           <div className="healing-card rounded-2xl p-8 mb-12 relative overflow-hidden">
@@ -127,30 +134,37 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
               <Sun className="w-full h-full text-yellow-400 soft-pulse" />
             </div>
             <div className="prose prose-lg max-w-none">
-              {documentToReactComponents(content as any)}
+              {content && documentToReactComponents(content as Document)}
             </div>
           </div>
 
           {/* Author Info */}
-          {author && typeof author === 'object' && 'fields' in author && (
+          {author && (author as AuthorEntry)?.fields && (
             <div className="healing-card rounded-2xl p-8 mb-8 relative overflow-hidden">
               <div className="absolute top-2 right-2 w-8 h-8 opacity-15">
                 <Heart className="w-full h-full text-green-400 soft-pulse" />
               </div>
               <div className="flex items-start space-x-4">
-                {(author as any).fields.avatar && (author as any).fields.avatar.fields && (
+                {(author as AuthorEntry).fields?.avatar && typeof (author as AuthorEntry).fields.avatar === 'object' && 'fields' in (author as AuthorEntry).fields.avatar! && (
                   <Image
-                    src={`https:${(author as any).fields.avatar.fields.file.url}`}
-                    alt={(author as any).fields.name}
+                    src={`https:${
+                      ((author as AuthorEntry).fields.avatar as ContentfulAsset).fields
+                        .file.url
+                    }`}
+                    alt={((author as AuthorEntry).fields.name as string) || "Author avatar"}
                     width={60}
                     height={60}
                     className="w-15 h-15 rounded-full border-2 border-green-200"
                   />
                 )}
                 <div>
-                  <h3 className="font-semibold text-green-800 text-lg">{(author as any).fields.name}</h3>
-                  {(author as any).fields.bio && (
-                    <p className="text-gray-700 mt-2 leading-relaxed">{(author as any).fields.bio}</p>
+                  <h3 className="font-semibold text-green-800 text-lg">
+                    {(author as AuthorEntry).fields.name as string}
+                  </h3>
+                  {(author as AuthorEntry).fields.bio && (
+                    <p className="text-gray-700 mt-2 leading-relaxed">
+                      {(author as AuthorEntry).fields.bio as string}
+                    </p>
                   )}
                   <p className="text-green-600 text-sm mt-2 font-medium">
                     🌱 Sharing authentic healing stories
@@ -172,8 +186,9 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
               Did this healing story resonate?
             </h3>
             <p className="text-gray-700 mb-8 leading-relaxed max-w-2xl mx-auto">
-              Your healing journey matters too. Share your own story or connect with me. 
-              Together, we create a supportive community where authentic healing can flourish.
+              Your healing journey matters too. Share your own story or connect
+              with me. Together, we create a supportive community where
+              authentic healing can flourish.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -199,5 +214,5 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
         </div>
       </article>
     </div>
-  )
+  );
 }

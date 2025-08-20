@@ -12,7 +12,7 @@ export default function AboutPage() {
           <div className="absolute top-10 right-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
           <div className="absolute -bottom-8 left-20 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
         </div>
-        
+
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
             <div className="w-24 h-24 bg-gradient-to-br from-green-100 to-blue-200 rounded-full mx-auto mb-8 flex items-center justify-center shadow-lg breathe-animation">
@@ -25,12 +25,12 @@ export default function AboutPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              This is my real story of healing and growth through unemployment. Not the sanitized version you see on social media, 
+              This is my real story of healing and growth through unemployment. Not the sanitized version you see on social media,
               but the authentic, messy, beautiful human experience of finding hope while everything feels uncertain.
             </p>
             <div className="mt-8 p-4 bg-white/50 backdrop-blur-sm rounded-2xl border border-green-200/30 max-w-2xl mx-auto">
               <p className="text-green-700 font-medium">
-                🤗 If you're here, you're probably going through something similar. You're not alone, and your healing matters.
+                🤗 If you&apos;re here, you&apos;re probably going through something similar. You&apos;re not alone, and your healing matters.
               </p>
             </div>
           </div>
@@ -53,18 +53,18 @@ export default function AboutPage() {
                 </h2>
                 <div className="prose prose-lg text-gray-700 space-y-6 leading-relaxed">
                   <p className="text-lg">
-                    I used to work in [your field] for [X] years. I thought I had it all figured out. 
-                    Then life happened, and suddenly I was scrolling job boards at 2 AM, questioning 
+                    I used to work in [your field] for [X] years. I thought I had it all figured out.
+                    Then life happened, and suddenly I was scrolling job boards at 2 AM, questioning
                     everything I thought I knew about myself and my worth.
                   </p>
                   <p>
-                    What nobody tells you is how unemployment affects your entire being - not just your bank account. 
-                    It challenges your self-worth, your daily routine, your sense of purpose, and sometimes even 
-                    your faith in the future. But I've learned that this challenge can also become a gateway to profound healing.
+                    What nobody tells you is how unemployment affects your entire being - not just your bank account.
+                    It challenges your self-worth, your daily routine, your sense of purpose, and sometimes even
+                    your faith in the future. But I&apos;ve learned that this challenge can also become a gateway to profound healing.
                   </p>
                   <p className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 italic">
-                    I started documenting this journey because I felt so isolated in these feelings. 
-                    Turns out, millions of us are navigating similar paths, but we're all healing in silence. 
+                    I started documenting this journey because I felt so isolated in these feelings.
+                    Turns out, millions of us are navigating similar paths, but we&apos;re all healing in silence.
                     This is my attempt to break that silence and create space for authentic healing.
                   </p>
                 </div>
@@ -76,34 +76,34 @@ export default function AboutPage() {
                   <Sun className="w-full h-full text-yellow-400 soft-pulse" />
                 </div>
                 <h2 className="text-3xl font-bold text-green-800 mb-6">
-                  What You'll Find in My Healing Space
+                  What You&apos;ll Find in My Healing Space
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200/30">
                     <h3 className="font-semibold text-green-800 mb-3 text-lg">🌿 Authentic Healing</h3>
                     <p className="text-green-700 text-sm leading-relaxed">
-                      The difficult days, breakthrough moments, and everything in between. 
-                      Real healing isn't always pretty, and I share it all.
+                      The difficult days, breakthrough moments, and everything in between.
+                      Real healing isn&apos;t always pretty, and I share it all.
                     </p>
                   </div>
                   <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200/30">
                     <h3 className="font-semibold text-blue-800 mb-3 text-lg">💡 Growth Insights</h3>
                     <p className="text-blue-700 text-sm leading-relaxed">
-                      Practical tools, coping strategies, and wisdom gained 
+                      Practical tools, coping strategies, and wisdom gained
                       through this transformative journey.
                     </p>
                   </div>
                   <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 border border-purple-200/30">
                     <h3 className="font-semibold text-purple-800 mb-3 text-lg">🧠 Mental Wellness</h3>
                     <p className="text-purple-700 text-sm leading-relaxed">
-                      Self-care practices, therapy insights, and maintaining 
-                      emotional balance during life's storms.
+                      Self-care practices, therapy insights, and maintaining
+                      emotional balance during life&apos;s storms.
                     </p>
                   </div>
                   <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 border border-yellow-200/30">
                     <h3 className="font-semibold text-yellow-800 mb-3 text-lg">🤝 Healing Community</h3>
                     <p className="text-yellow-700 text-sm leading-relaxed">
-                      A safe space for others on similar journeys 
+                      A safe space for others on similar journeys
                       to connect, share, and heal together.
                     </p>
                   </div>
@@ -139,7 +139,7 @@ export default function AboutPage() {
                 </div>
                 <div className="mt-6 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-green-200/30 text-center">
                   <p className="text-green-700 font-medium text-sm">
-                    🌿 Progress isn't always linear, but every day is part of my healing story
+                    🌿 Progress isn&apos;t always linear, but every day is part of my healing story
                   </p>
                 </div>
               </section>
@@ -183,7 +183,7 @@ export default function AboutPage() {
                   Let&apos;s Heal Together
                 </h3>
                 <p className="text-blue-700 text-sm mb-4 leading-relaxed">
-                  Going through something similar? Want to share your healing story? 
+                  Going through something similar? Want to share your healing story?
                   Or just need someone who truly understands?
                 </p>
                 <a
@@ -205,11 +205,11 @@ export default function AboutPage() {
                   You&apos;re Not Alone in This
                 </h3>
                 <p className="text-green-700 text-sm mb-4 leading-relaxed">
-                  If you&apos;re reading this while navigating your own challenges, know that your feelings 
+                  If you&apos;re reading this while navigating your own challenges, know that your feelings
                   are completely valid and your healing journey matters.
                 </p>
                 <Link
-                  href="/blog"
+                  href="/story"
                   className="inline-flex items-center text-green-600 hover:text-green-700 font-medium text-sm bg-white/50 px-3 py-2 rounded-lg hover:bg-white/70 transition-all"
                 >
                   Read healing stories →

@@ -10,12 +10,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Unemployment Journey - Sharing the Real Experience",
+  title: "Healing Journey - Sharing the Real Experience",
   description: "A personal blog about navigating unemployment, sharing struggles, growth, and hope during the job search journey.",
   keywords: ["unemployment", "job search", "career", "personal growth", "mental health"],
-  authors: [{ name: "Unemployment Journey" }],
+  authors: [{ name: "Healing Journey" }],
   openGraph: {
-    title: "Unemployment Journey - Sharing the Real Experience",
+    title: "Healing Journey - Sharing the Real Experience",
     description: "A personal blog about navigating unemployment, sharing struggles, growth, and hope during the job search journey.",
     type: "website",
   },

@@ -12,7 +12,7 @@ A personal blog website built with Next.js to share authentic experiences and fe
 
 - **📝 Personal Blog**: Share daily experiences, thoughts, and emotions
 - **🎨 Responsive Design**: Beautiful, mobile-first UI with unemployment journey theme
-- **📊 Journey Timeline**: Visual representation of the unemployment experience  
+- **📊 Journey Timeline**: Visual representation of the unemployment experience
 - **📚 Resources Section**: Curated resources for job seekers and unemployed individuals
 - **💬 Community Support**: Emotional support components and encouraging messaging
 - **🔍 Content Management**: Powered by Contentful CMS (free tier)
@@ -123,7 +123,7 @@ This website is designed with empathy and authenticity in mind:
 ### Update Personal Information
 Edit `/src/app/about/page.tsx` to add your:
 - Background story
-- Current statistics 
+- Current statistics
 - Contact information
 - Personal details
 

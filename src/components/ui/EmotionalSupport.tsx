@@ -39,12 +39,13 @@ const dailyAffirmations = [
   "Taking time to heal is productive too"
 ]
 
-const breathingExercise = {
-  inhale: 4,
-  hold: 4,
-  exhale: 4,
-  rest: 4
-}
+// Breathing exercise configuration (for future use)
+// const breathingExercise = {
+//   inhale: 4,
+//   hold: 4,
+//   exhale: 4,
+//   rest: 4
+// }
 
 export default function EmotionalSupport() {
   const currentAffirmation = dailyAffirmations[Math.floor(Math.random() * dailyAffirmations.length)]
@@ -75,9 +76,9 @@ export default function EmotionalSupport() {
       <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-6 mb-8 border-l-4 border-green-400">
         <div className="flex items-center mb-3">
           <Smile className="w-5 h-5 text-green-600 mr-2" />
-          <h3 className="font-semibold text-green-800">Today's Affirmation</h3>
+          <h3 className="font-semibold text-green-800">Today&apos;s Affirmation</h3>
         </div>
-        <p className="text-green-700 text-lg italic font-medium">"{currentAffirmation}"</p>
+        <p className="text-green-700 text-lg italic font-medium">&ldquo;{currentAffirmation}&rdquo;</p>
       </div>
 
       {/* Breathing Exercise */}

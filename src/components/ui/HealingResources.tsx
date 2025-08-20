@@ -100,7 +100,7 @@ export default function HealingResources() {
           <div className="healing-card rounded-2xl p-6 max-w-2xl mx-auto">
             <h3 className="font-semibold text-green-800 mb-3">Remember:</h3>
             <p className="text-gray-700 leading-relaxed">
-              Healing isn't linear. Some days you'll use all these tools, other days just one might be enough. 
+              Healing isn&apos;t linear. Some days you&apos;ll use all these tools, other days just one might be enough. 
               Be gentle with yourself and trust your healing process. 🌱
             </p>
           </div>

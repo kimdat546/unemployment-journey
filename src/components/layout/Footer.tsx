@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="absolute top-10 left-10 w-32 h-32 bg-green-300 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
         <div className="absolute bottom-10 right-10 w-32 h-32 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
       </div>
-      
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 relative">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* About Section */}
@@ -24,7 +24,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-gray-700 leading-relaxed max-w-sm">
-              My personal sanctuary for sharing the authentic experience of healing and growth. 
+              My personal sanctuary for sharing the authentic experience of healing and growth.
               The daily challenges, breakthrough moments, and everything that makes us human.
             </p>
             <div className="p-3 bg-white/50 rounded-xl border border-green-200/30">
@@ -44,8 +44,8 @@ export default function Footer() {
             </div>
             <ul className="space-y-3">
               <li>
-                <Link 
-                  href="/blog" 
+                <Link
+                  href="/story"
                   className="inline-flex items-center text-sm text-gray-700 hover:text-green-700 transition-colors bg-white/30 px-3 py-2 rounded-lg hover:bg-white/50 border border-transparent hover:border-green-200/30"
                 >
                   <span className="text-base mr-2">📖</span>
@@ -53,8 +53,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link 
-                  href="/about" 
+                <Link
+                  href="/about"
                   className="inline-flex items-center text-sm text-gray-700 hover:text-green-700 transition-colors bg-white/30 px-3 py-2 rounded-lg hover:bg-white/50 border border-transparent hover:border-green-200/30"
                 >
                   <span className="text-base mr-2">🌱</span>
@@ -106,7 +106,7 @@ export default function Footer() {
             </div>
             <div className="p-4 bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl border border-pink-200/30">
               <p className="text-xs text-pink-700 leading-relaxed">
-                🤗 Reach out if you&apos;re navigating a similar path. 
+                🤗 Reach out if you&apos;re navigating a similar path.
                 Sometimes knowing someone else understands makes all the difference in our healing.
               </p>
             </div>

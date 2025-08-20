@@ -2,10 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Calendar, ArrowRight, Heart, Leaf } from 'lucide-react'
 import { format } from 'date-fns'
-import { Entry } from 'contentful'
+import { StoryEntry, ContentfulAsset } from '@/types/contentful'
 
 interface BlogCardProps {
-  post: Entry<any>
+  post: StoryEntry
 }
 
 export default function BlogCard({ post }: BlogCardProps) {
@@ -17,12 +17,12 @@ export default function BlogCard({ post }: BlogCardProps) {
       <div className="absolute top-3 right-3 w-8 h-8 opacity-20 z-10">
         <Leaf className="w-full h-full text-green-400 gentle-float" />
       </div>
-      
-      {featuredImage && typeof featuredImage === 'object' && 'fields' in featuredImage && (
+
+      {featuredImage && (featuredImage as ContentfulAsset)?.fields?.file && (
         <div className="aspect-video w-full overflow-hidden relative">
           <Image
-            src={`https:${(featuredImage as any).fields.file.url}`}
-            alt={(featuredImage as any).fields.title}
+            src={`https:${(featuredImage as ContentfulAsset).fields.file.url}`}
+            alt={(featuredImage as ContentfulAsset).fields.title || 'Featured image'}
             width={400}
             height={225}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
@@ -30,26 +30,26 @@ export default function BlogCard({ post }: BlogCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
         </div>
       )}
-      
+
       <div className="p-6">
         <div className="flex items-center text-sm text-green-600 mb-3">
           <Calendar className="h-4 w-4 mr-2" />
-          {publishedDate 
+          {publishedDate
             ? format(new Date(publishedDate as string), 'MMM d, yyyy')
             : format(new Date(post.sys.createdAt), 'MMM d, yyyy')
           }
         </div>
-        
+
         <h3 className="text-xl font-semibold text-gray-800 mb-3 line-clamp-2 group-hover:text-green-800 transition-colors">
           {title as string}
         </h3>
-        
+
         {excerpt && (
           <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
             {excerpt as string}
           </p>
         )}
-        
+
         {tags && Array.isArray(tags) && tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {(tags as string[]).slice(0, 3).map((tag) => (
@@ -67,10 +67,10 @@ export default function BlogCard({ post }: BlogCardProps) {
             )}
           </div>
         )}
-        
+
         <div className="flex items-center justify-between">
           <Link
-            href={`/blog/${slug as string}`}
+            href={`/story/${slug as string}`}
             className="inline-flex items-center text-green-600 hover:text-green-700 font-medium text-sm transition-colors group bg-white/50 px-4 py-2 rounded-lg hover:bg-white/70"
           >
             Read healing story
