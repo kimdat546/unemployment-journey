@@ -21,6 +21,12 @@ export async function generateStaticParams() {
   }))
 }
 
+// Enable dynamic params for new stories that aren't pre-generated
+export const dynamicParams = true
+
+// Revalidate this page every hour as a fallback
+export const revalidate = 3600
+
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = await getBlogPost(slug)

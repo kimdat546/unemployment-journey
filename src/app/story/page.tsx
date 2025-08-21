@@ -3,6 +3,9 @@ import { Search, Filter, Heart, BookOpen } from 'lucide-react'
 import { getBlogPosts } from '@/lib/contentful'
 import BlogCard from '@/components/ui/BlogCard'
 
+// Revalidate this page every hour as a fallback
+export const revalidate = 3600
+
 export default async function BlogPage() {
   const blogPosts = await getBlogPosts()
 
