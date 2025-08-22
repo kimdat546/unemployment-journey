@@ -103,7 +103,7 @@ export default function AboutPage() {
                     🌿 Welcome to My Journey 🌿
                   </p>
                   <p className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400 italic">
-                    started writing to ease the loneliness of this journey.
+                    I started writing to ease the loneliness of this journey.
                     Along the way, I realized many of us are quietly carrying
                     the same weight. This is a gentle space to share, to
                     breathe, and to heal together. Because unemployment isn’t
